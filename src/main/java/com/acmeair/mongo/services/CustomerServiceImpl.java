@@ -25,9 +25,9 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.connection.ConnectionDescription;
 import org.bson.Document;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
