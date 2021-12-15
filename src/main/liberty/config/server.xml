@@ -16,9 +16,7 @@
       filepath="${server.output.dir}/logs/http_defaultEndpoint_access.log" 
       logFormat='%h %u %t "%r" %s %b %D %{User-agent}i'>
     </accessLogging>
-  </httpEndpoint>
-  
-  <monitor filter="REST" />
+  </httpEndpoint> 
 
   <basicRegistry id="basic" realm="WebRealm">
     <user name="${env.USERNAME}" password="${env.PASSWORD}" />
