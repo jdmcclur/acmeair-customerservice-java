@@ -20,6 +20,7 @@ import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -43,6 +44,7 @@ import com.acmeair.web.dto.CustomerInfo;
 
 
 @Path("/internal")
+@ApplicationScoped
 public class CustomerServiceRestInternal {
 
   // This class contains endpoints that are called by other services.
