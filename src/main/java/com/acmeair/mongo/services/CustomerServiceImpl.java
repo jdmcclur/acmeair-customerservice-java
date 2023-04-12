@@ -16,7 +16,6 @@
 
 package com.acmeair.mongo.services;
 
-import com.acmeair.mongo.ConnectionManager;
 import com.acmeair.service.CustomerService;
 import com.acmeair.web.dto.AddressInfo;
 import com.acmeair.web.dto.CustomerInfo;
@@ -43,11 +42,11 @@ public class CustomerServiceImpl extends CustomerService {
   private final int WRITE_BATCH_SIZE = ConnectionDescription.getDefaultMaxWriteBatchSize();
     
   @Inject
-  ConnectionManager connectionManager;
+  MongoDatabase database;
+
 
   @PostConstruct
   public void initialization() {
-    MongoDatabase database = connectionManager.getDb();
     customer = database.getCollection("customer");
   }
 
