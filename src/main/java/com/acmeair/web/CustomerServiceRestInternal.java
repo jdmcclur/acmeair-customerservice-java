@@ -20,6 +20,7 @@ import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -33,7 +34,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 
-import org.eclipse.microprofile.metrics.annotation.SimplyTimed;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import com.acmeair.service.CustomerService;
 
@@ -43,6 +44,7 @@ import com.acmeair.web.dto.CustomerInfo;
 
 
 @Path("/internal")
+@ApplicationScoped
 public class CustomerServiceRestInternal {
 
   // This class contains endpoints that are called by other services.
@@ -62,7 +64,7 @@ public class CustomerServiceRestInternal {
   @Path("/validateid")
   @Consumes({ "application/x-www-form-urlencoded" })
   @Produces("application/json")
-  @SimplyTimed(name="com.acmeair.web.CustomerServiceRestInternal.validateCustomer", tags= {"app=acmeair-customerservice-java"})
+  @Timed(name="com.acmeair.web.CustomerServiceRestInternal.validateCustomer", tags= {"app=acmeair-customerservice-java"})
   public LoginResponse validateCustomer( 
       @FormParam("login") String login,
       @FormParam("password") String password) {
@@ -87,7 +89,7 @@ public class CustomerServiceRestInternal {
   @Path("/updateCustomerTotalMiles/{custid}")
   @Consumes({ "application/x-www-form-urlencoded" })
   @Produces("application/json")
-  @SimplyTimed(name="com.acmeair.web.CustomerServiceRestInternal.updateCustomerTotalMiles", tags={"app=acmeair-customerservice-java"})
+  @Timed(name="com.acmeair.web.CustomerServiceRestInternal.updateCustomerTotalMiles", tags={"app=acmeair-customerservice-java"})
   public MilesResponse updateCustomerTotalMiles(
       @PathParam("custid") String customerid,
       @FormParam("miles") Long miles) {
