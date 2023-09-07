@@ -33,7 +33,6 @@ import com.acmeair.service.CustomerService;
 import com.acmeair.web.dto.CustomerInfo;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
-import org.eclipse.microprofile.metrics.annotation.Timed;
 
 @Path("/")
 @ApplicationScoped
@@ -53,7 +52,6 @@ public class CustomerServiceRest {
   @GET
   @Path("/byid/{custid}")
   @Produces("text/plain")
-  @Timed(name="com.acmeair.web.CustomerServiceRest.getCustomer", tags = "app=acmeair-customerservice-java")
   @RolesAllowed({"user"})
   public Response getCustomer(@PathParam("custid") String customerid) {
     if (logger.isLoggable(Level.FINE)) {
@@ -81,7 +79,6 @@ public class CustomerServiceRest {
   @POST
   @Path("/byid/{custid}")
   @Produces("text/plain")
-  @Timed(name="com.acmeair.web.CustomerServiceRest.putCustomer", tags = "app=acmemair-customerservice-java")
   @RolesAllowed({"user"})
   public Response putCustomer(CustomerInfo customer, @PathParam("custid") String customerid ) {
 
