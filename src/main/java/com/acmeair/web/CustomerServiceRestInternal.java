@@ -34,8 +34,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 
-import org.eclipse.microprofile.metrics.annotation.Timed;
-
 import com.acmeair.service.CustomerService;
 
 import com.acmeair.web.dto.AddressInfo;
@@ -64,7 +62,6 @@ public class CustomerServiceRestInternal {
   @Path("/validateid")
   @Consumes({ "application/x-www-form-urlencoded" })
   @Produces("application/json")
-  @Timed(name="com.acmeair.web.CustomerServiceRestInternal.validateCustomer", tags= {"app=acmeair-customerservice-java"})
   public LoginResponse validateCustomer( 
       @FormParam("login") String login,
       @FormParam("password") String password) {
@@ -89,7 +86,6 @@ public class CustomerServiceRestInternal {
   @Path("/updateCustomerTotalMiles/{custid}")
   @Consumes({ "application/x-www-form-urlencoded" })
   @Produces("application/json")
-  @Timed(name="com.acmeair.web.CustomerServiceRestInternal.updateCustomerTotalMiles", tags={"app=acmeair-customerservice-java"})
   public MilesResponse updateCustomerTotalMiles(
       @PathParam("custid") String customerid,
       @FormParam("miles") Long miles) {
